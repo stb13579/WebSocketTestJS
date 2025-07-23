@@ -1,4 +1,4 @@
-import { simulation, constantUsersPerSec, global, scenario, getParameter, pause, exec, repeat, regex } from "@gatling.io/core";
+import { simulation, constantUsersPerSec, scenario, getParameter, pause, exec, repeat, regex } from "@gatling.io/core";
 import { http, ws } from "@gatling.io/http";
 
 export default simulation((setUp) => {
