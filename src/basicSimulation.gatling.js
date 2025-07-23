@@ -23,10 +23,10 @@ const scn = scenario("WebSocket")
     ws("Connect WS").connect("/"),
     pause(1),
     repeat(5, "i").on(
-      ws("Say Hello WS")
+      ws("Customer Question")
         .sendText("{\"text\": \"Hello, I'm #{id} and this is message #{i}!\"}")
         .await(30).on(
-          ws.checkTextMessage("checkName").check(regex("(.*)"))
+          ws.checkTextMessage("Chatbot Response").check(regex("(.*)"))
         )
     ),
     pause(1),
