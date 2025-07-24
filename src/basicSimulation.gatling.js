@@ -2,9 +2,6 @@ import { simulation, constantUsersPerSec, scenario, getParameter, pause, exec, r
 import { http, ws } from "@gatling.io/http";
 
 export default simulation((setUp) => {
-  // Load VU count from system properties
-  // Reference: https://docs.gatling.io/guides/passing-parameters/
-  const vu = parseInt(getParameter("vu", "1"));
 
   const httpProtocol = http
   .baseUrl("http://localhost:3000")
