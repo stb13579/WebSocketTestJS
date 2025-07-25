@@ -1,7 +1,9 @@
-import { simulation, constantUsersPerSec, scenario, getParameter, pause, exec, repeat, regex } from "@gatling.io/core";
+import { simulation, constantUsersPerSec, scenario, feed, pause, exec, repeat, regex, csv } from "@gatling.io/core";
 import { http, ws } from "@gatling.io/http";
 
 export default simulation((setUp) => {
+
+  const questionsFeeder = csv("resources/health_insurance_chatbot_questions.csv").random();
 
   const httpProtocol = http
   .baseUrl("http://localhost:3000")
@@ -20,10 +22,11 @@ const scn = scenario("WebSocket")
     ws("Connect WS").connect("/"),
     pause(1),
     repeat(5, "i").on(
+      feed(questionsFeeder), // Feed the data here, before using it
       ws("Customer Question")
-        .sendText("{\"text\": \"Hello, I'm #{id} and this is message #{i}!\"}")
+        .sendText(session => session.get("user_question")) // Use data from the "user_question" column
         .await(30).on(
-          ws.checkTextMessage("Chatbot Response").check(regex("(.*)"))
+          ws.checkTextMessage("Chatbot Response").check(regex("(.*)")),
         )
     ),
     pause(1),
