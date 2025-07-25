@@ -8,7 +8,7 @@ You need [Node.js](https://nodejs.org/en/download) v18 or later (LTS versions on
 
 ## Use WebSocket demo project
 
-Run the JavaScript sample:
+Run the JavaScript sample test:
 
 ```shell
 cd javascript
@@ -33,3 +33,13 @@ npm run format # Format code with prettier
 npm run build # Build project but don't run
 npm run basicSimulation # Run the included basicSimulation simulation
 ```
+
+## Keep learning
+
+Here are 2 challenges to help you expand your websocket testing skills:
+
+1. **Add more specific response validation:**: Enhance the simulation by adding more specific checks for the chatbot's responses. For example, check if the response contains certain keywords or phrases that are expected based on the question asked.
+
+2. **Implement Error Handling**: Enhance the simulation by implementing error handling for websocket connections. Simulate scenarios where the connection drops or the server returns an error message.
+
+Send your solutions to Marketing@gatling.io for a chance to win some company swag. 
